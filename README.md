@@ -1,7 +1,7 @@
 # Postman
 
 <h1 align="center">
-This is my collection from Postman/h1>
+This is my collection from Postman</h1>
 
 
 <div align="center">
