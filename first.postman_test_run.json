@@ -1,0 +1,172 @@
+{
+	"id": "d33aef98-5145-4bc6-a9c4-0f5cf54ca690",
+	"name": "first",
+	"timestamp": "2023-03-11T04:59:14.328Z",
+	"collection_id": "22622826-abf08c40-a014-4a0c-b5c6-1ae07254edf5",
+	"folder_id": 0,
+	"environment_id": "22622826-abc547d3-9dce-4c07-a6a9-5c108a6458e8",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9f67bfaa-e35e-4dfc-ac17-e27b3cb0d1ea",
+			"name": "/get_method",
+			"url": "http://162.55.220.72:5005/get_method?name=katy&age=12",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				106
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b99bd9eb-0ee0-491b-8fd1-c6d057778dfc",
+			"name": "/user_info_3",
+			"url": "http://162.55.220.72:5005/user_info_3?name=katy&age=12&salary=2000",
+			"time": 121,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				121
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "87fe2cc6-7269-4b45-a5aa-b629e4815823",
+			"name": "/object_info_1",
+			"url": "http://162.55.220.72:5005//object_info_1?name=katy&age=12&weight=45",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				107
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1e692a3e-3670-4087-8508-c932a4ce1c18",
+			"name": "/object_info_2",
+			"url": "http://162.55.220.72:5005/object_info_2?name=katy&age=12&salary=2000",
+			"time": 105,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				105
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2d832b82-12c6-4194-b833-d70b77f8846e",
+			"name": "/object_info_3",
+			"url": "http://162.55.220.72:5005/object_info_3?name=katy&age=12&salary=2000",
+			"time": 113,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				113
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0a6b3a50-4d1c-4d28-8bd1-9012470b0860",
+			"name": "/object_info_4",
+			"url": "http://162.55.220.72:5005/object_info_4?name=katy&age=12&salary=2000",
+			"time": 112,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				112
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "eace921d-da81-48fc-952f-76b38192c693",
+			"name": "/user_info_2",
+			"url": "http://162.55.220.72:5005/object_info_4?name=katy&age=12&salary=2000",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				107
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 771,
+	"collection": {
+		"requests": [
+			{
+				"id": "9f67bfaa-e35e-4dfc-ac17-e27b3cb0d1ea",
+				"method": "GET"
+			},
+			{
+				"id": "b99bd9eb-0ee0-491b-8fd1-c6d057778dfc",
+				"method": "POST"
+			},
+			{
+				"id": "87fe2cc6-7269-4b45-a5aa-b629e4815823",
+				"method": "GET"
+			},
+			{
+				"id": "1e692a3e-3670-4087-8508-c932a4ce1c18",
+				"method": "GET"
+			},
+			{
+				"id": "2d832b82-12c6-4194-b833-d70b77f8846e",
+				"method": "GET"
+			},
+			{
+				"id": "0a6b3a50-4d1c-4d28-8bd1-9012470b0860",
+				"method": "GET"
+			},
+			{
+				"id": "eace921d-da81-48fc-952f-76b38192c693",
+				"method": "GET"
+			}
+		]
+	}
+}
