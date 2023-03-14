@@ -82,6 +82,32 @@
 | 451  | Unavailable For Legal Reasons            | недоступно по юридическим причинам     |
 | 499  | Client Closed Request                    | клиент закрыл соединение               |
 
+---
+
+| 5xx | Server Error | ошибка сервера |
+| ---- |----------------------------------------- | -------------------------------------- |
+| 500 | Internal Server Error | внутренняя ошибка сервера |
+| 501 | Not Implemented | не реализовано |
+| 502 | Bad Gateway | плохой, ошибочный шлюз |
+| 503 | Service Unavailable | сервис недоступен |
+| 504 | Gateway Timeout | шлюз не отвечает |
+| 505 | HTTP Version Not Supported | версия HTTP не поддерживается |
+| 506 | Variant Also Negotiates | вариант тоже проводит согласование |
+| 507 | Insufficient Storage | переполнение хранилища |
+| 508 | Loop Detected | обнаружено бесконечное перенаправление |
+| 509 | Bandwidth Limit Exceeded | исчерпана пропускная ширина канала |
+| 510 | Not Extended | не расширено |
+| 511 | Network Authentication Required | требуется сетевая аутентификация |
+| 520 | Unknown Error | неизвестная ошибка |
+| 521 | Web Server Is Down | веб-сервер не работает |
+| 522 | Connection Timed Out | соединение не отвечает |
+| 523 | Origin Is Unreachable | источник недоступен |
+| 524 | A Timeout Occurred | время ожидания истекло |
+| 525 | SSL Handshake Failed | квитирование SSL не удалось |
+| 526 | Invalid SSL Certificate | недействительный сертификат SSL |
+
+---
+
 ```
 {
 	"info": {
