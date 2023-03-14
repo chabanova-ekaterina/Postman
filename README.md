@@ -76,6 +76,18 @@
 | 417  | Expectation Failed                       | ожидание не удалось               |
 | 418  | I’m a teapot                             | я — чайник                        |
 | 419  | Authentication Timeout (not in RFC 2616) | обычно ошибка проверки CSRF       |
+| 421  | Misdirected Request              |                                          |
+| 422  | Unprocessable Entity              | необрабатываемый экземпляр                                         |
+| 423  | Locked              | заблокировано                                         |
+| 424  | Failed Dependency              | невыполненная зависимость                                         |
+| 425  | Too Early              | слишком рано                                         |
+| 426  | Upgrade Required              | необходимо обновление                                         |
+| 428  | Precondition Required              | необходимо предусловие                                         |
+| 429  | Too Many Requests              | слишком много запросов                                         |
+| 431  | Request Header Fields Too Large              | поля заголовка запроса слишком большие                                         |
+| 449  | Retry With              | повторить с                                         |
+| 451  | Unavailable For Legal Reasons              | недоступно по юридическим причинам                                          |
+| 499  | Client Closed Request              | клиент закрыл соединение                                         |
 
 ```
 {
