@@ -1,12 +1,13 @@
 # Postman
 
-<h1 align="center">
-        This is my collection from Postman
-</h1>
-
 <div align="center">
         <img src= "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1hdw3eZFGswGVgZX19krDZ-94tUowdJpT"  title="Postman" alt="Postman" width="60" height="60"/>
 </div>
+
+<h3 align="center"> HTTP status code </h3>
+
+<details>
+<summary>1xx</summary>
 
 | 1xx | Informational       | информационные          |
 | --- | ------------------- | ----------------------- |
@@ -14,8 +15,10 @@
 | 101 | Switching Protocols | переключение протоколов |
 | 102 | Processing          | идёт обработка          |
 | 103 | Early Hints         | ранняя метаинформация   |
+</details>
 
----
+<details>
+<summary>2xx</summary>
 
 | 2xx | Success                       | успешно                   |
 | --- |------------------------------ | ------------------------- |
@@ -30,7 +33,10 @@
 | 208 | Already Reported              | уже сообщалось            |
 | 226 | IM Used                       | использовано IM           |
 
----
+</details>
+
+<details>
+<summary>3xx</summary>
 
 |  3xx |  Redirection       | перенаправление                                 |
 | ---- |------------------- | ----------------------------------------------- |
@@ -44,8 +50,10 @@
 |  306 |  зарезервировано   | код использовался только в ранних спецификациях |
 |  307 | Temporary Redirect | временное перенаправление                       |
 |  308 | Permanent Redirect | постоянное перенаправление                      |
+</details>
 
----
+<details>
+<summary>4xx</summary>
 
 | 4xx  |      Client Error                        |       ошибка клиента                   |
 | ---- |----------------------------------------- | -------------------------------------- |
@@ -81,8 +89,10 @@
 | 449  | Retry With                               | повторить с                            |
 | 451  | Unavailable For Legal Reasons            | недоступно по юридическим причинам     |
 | 499  | Client Closed Request                    | клиент закрыл соединение               |
+</details>
 
----
+<details>
+<summary>5xx</summary>
 
 | 5xx | Server Error                    | ошибка сервера                         |
 | --- |-------------------------------- | -------------------------------------- |
@@ -106,7 +116,12 @@
 | 525 | SSL Handshake Failed            | квитирование SSL не удалось            |
 | 526 | Invalid SSL Certificate         | недействительный сертификат SSL        |
 
----
+</details>
+
+
+<h1 align="center">
+        This is my collection from Postman
+</h1>
 
 ```
 {
@@ -117,8 +132,8 @@
 		"_exporter_id": "22622826"
 	},
 	
-```
-```
+
+
 	"item": [
 		{
 			"name": "/get_method",
