@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "053eb6b9-13b0-4094-8880-8a3b732508dd",
+		"name": "zero",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22622826"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"    var jsonData = pm.response.json();\r",
+							"    var resp_token = jsonData.token\r",
+							"\r",
+							"console.log(resp_token)\r",
+							"\r",
+							"pm.environment.set(\"token\", \"resp_token\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "Katy",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/new_data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var resp_age = jsonData.age;\r",
+							"\r",
+							"// забираем из реквета age\r",
+							"var req = request.data;\r",
+							"var req_age = +req.age;\r",
+							"\r",
+							"// console.log('Resp_age =',  resp_age, )\r",
+							"// console.log('Peq_age = ',  req_age)\r",
+							"\r",
+							"// забираем из url\r",
+							"var req_url = pm.request.url.query.toObject();\r",
+							"\r",
+							"console.log(\"Resp_age =\", resp_age, )\r",
+							"console.log('Req_age = ', req_age)\r",
+							"\r",
+							"pm.test(\"Req_Resp_AGE_check\", function() {\r",
+							"    pm.expect(resp_age).to.eql(req_age);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "katy",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/new_data?name=Katy&age=12&salary=2000&auth_token={{token}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"new_data"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Katy"
+						},
+						{
+							"key": "age",
+							"value": "12"
+						},
+						{
+							"key": "salary",
+							"value": "2000"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user_info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"var resp_age = jsonData.age;\r",
+							"// забираем из реквета age\r",
+							"var req = request.data;\r",
+							"var req_age = +req.age;\r",
+							"\r",
+							"var req_raw_json = JSON.parse(pm.request.body.raw)\r",
+							"\r",
+							"// забираем из url\r",
+							"var req_url = pm.request.url.query.toObject();\r",
+							"\r",
+							"console.log(\"req_raw = \", req_raw_json.salary )\r",
+							"console.log(\"req_url = \", req_url.user_name )\r",
+							"\r",
+							"console.log(\"Resp_age =\", resp_age, )\r",
+							"console.log(\"Req_age = \", req_age)\r",
+							"\r",
+							"pm.test(\"Req_Resp_AGE_check\", function() {\r",
+							"    pm.expect(resp_age).to.eql(req_age);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Katy\",\r\n    \"age\":16,\r\n    \"salary\":2000,\r\n    \"auth_token\": \"{{token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user_info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/user_info Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var resp_json = pm.response.json();\r",
+							"var resp_u_age = resp_json.person.u_age;\r",
+							"\r",
+							"var req = request.data;\r",
+							"\r",
+							"var req_raw_json = JSON.parse(pm.request.body.raw)\r",
+							"var req_age =req_raw_json.age;\r",
+							"\r",
+							"var req_url = pm.request.url.query.toObject();\r",
+							"var req_salary = req_raw_json.salary\r",
+							"\r",
+							"var resp_salary = resp_json.person.u_name[1]\r",
+							"\r",
+							"console.log(\"req_age = \", req_age )\r",
+							"console.log(\"resp_u_age = \", resp_u_age )\r",
+							"\r",
+							"pm.test(\"Req_Resp_AGE_check\", function() {\r",
+							"    pm.expect(req_age).to.eql(resp_u_age);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Req_Resp_SALARY_check\", function() {\r",
+							"    pm.expect(req_salary).to.eql(resp_salary);\r",
+							"}); "
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Katy\",\r\n    \"age\":16,\r\n    \"salary\":2000,\r\n    \"auth_token\": \"{{token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/user_info",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
