@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "e3356b2b-d94c-4f7a-9831-755bd030d497",
+		"name": "second",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22622826"
+	},
+	"item": [
+		{
+			"name": "first",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/first",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"first"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user_info_3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// 2. Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//3. Спарсить response body в json\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"// 4. Проверить, что name в ответе равно name s request (name вбить руками.)\r",
+							"pm.test(\"Req_Resp_NAME_check\", function(){\r",
+							"    pm.expect(jsonData.name).to.eql(\"katy\");\r",
+							"});\r",
+							"\r",
+							"console.log(\"jsonData.name = \" + jsonData.name )\r",
+							"\r",
+							"//5. Проверить, что age в ответе равно age s request (age вбить руками.)\r",
+							"pm.test(\"Req_Resp_AGE_check\", function(){\r",
+							"    pm.expect(jsonData.age).to.eql('12');\r",
+							"});\r",
+							"\r",
+							"console.log(\"jsonData.age = \"+ jsonData.age )\r",
+							"\r",
+							"// 6. Проверить, что salary в ответе равно salary s request (salary вбить руками.)\r",
+							"pm.test(\"Req_Resp_SALARY_check\", function(){\r",
+							"    pm.expect(jsonData.salary).to.eql(2000);\r",
+							"});\r",
+							"\r",
+							"console.log(\"jsonData.salary = \"+ jsonData.salary )\r",
+							"\r",
+							"//7. Спарсить request.\r",
+							"var req = request.data;\r",
+							"\r",
+							"//8. Проверить, что name в ответе равно name s request (name забрать из request.)\r",
+							"\r",
+							"pm.test(\"The response name is equal to the request name\", function(){\r",
+							"    pm.expect(jsonData.name).to.eql(req.name);\r",
+							"});\r",
+							"\r",
+							"console.log(jsonData.name)\r",
+							"\r",
+							"//9. Проверить, что age в ответе равно age s request (age забрать из request.)\r",
+							"pm.test(\"Req_Resp_AGE_check\", function(){\r",
+							"    pm.expect(jsonData.age).to.eql(req.age);\r",
+							"});\r",
+							"\r",
+							"console.log(jsonData.age)\r",
+							"\r",
+							"// 10. Проверить, что salary в ответе равно salary s request (salary забрать из request.)\r",
+							"\r",
+							"pm.test(\"Req_Resp_SALARY_check\", function(){\r",
+							"    pm.expect(jsonData.salary).to.eql(+req.salary);\r",
+							"});\r",
+							"\r",
+							"console.log(jsonData.salary)\r",
+							"\r",
+							"// 11. Вывести в консоль параметр family из response\r",
+							"\r",
+							"console.log(jsonData.family)\r",
+							"\r",
+							"// 12. Проверить что u_salary_1_5_year в ответе равно salary*4 (salary забрать из request)\r",
+							"// var resp = pm.response.json();\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"var u_salary_1_5_year = jsonData.family.u_salary_1_5_year;\r",
+							"\r",
+							"console.log(\"u_salary_1_5_year = \" + u_salary_1_5_year )\r",
+							"\r",
+							"pm.test(\"salary*4\", function(){\r",
+							"    pm.expect(u_salary_1_5_year).to.eql(req.salary*4);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "katy",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "12",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "2000",
+							"type": "text"
+						},
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user_info_3",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user_info_3"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "katy",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"    var jsonData = pm.response.json();\r",
+							"    var resp_token = jsonData.token\r",
+							"\r",
+							"console.log(resp_token)\r",
+							"\r",
+							"pm.environment.set(\"token\", \"resp_token\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "login",
+							"value": "Katy",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
