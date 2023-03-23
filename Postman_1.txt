@@ -124,7 +124,7 @@ response:
                      'u_salary_5_years': salary * 4.2}
           }
           
----          
+---                                                      English version
          
 HW_1
 Create requests in Postman.
