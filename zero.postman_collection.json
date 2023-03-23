@@ -200,7 +200,7 @@
 			"response": []
 		},
 		{
-			"name": "/user_info Copy",
+			"name": "/user_info_2",
 			"event": [
 				{
 					"listen": "test",
