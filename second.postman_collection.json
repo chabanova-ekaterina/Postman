@@ -8,6 +8,23 @@
 	"item": [
 		{
 			"name": "/first",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// 1. Отправить запрос\r",
+							"// 2. Статус код 200\r",
+							"// 3. Проверить, что в body приходит правильный string\r",
+							"let resp = pm.response.text();\r",
+							"pm.test(\"body comes correct string\", function () {\r",
+							"    pm.response.to.have.body(\"This is the first responce from server!ss\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
