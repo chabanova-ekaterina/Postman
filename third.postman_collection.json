@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "3436e860-2c96-4bc4-ae0b-b50bf4441cb4",
+		"name": "third",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22622826"
+	},
+	"item": [
+		{
+			"name": "/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// 1) необходимо залогиниться\r",
+							"// POST\r",
+							"// http://162.55.220.72:5005/login\r",
+							"// login : str (кроме /)\r",
+							"// password : str\r",
+							"// Приходящий токен необходимо передать во все остальные запросы.\r",
+							"\r",
+							"var req = pm.response.json();\r",
+							"var resp_token = req.token\r",
+							"\r",
+							"pm.environment.set(\"token\", \"resp_token\");\r",
+							"\r",
+							"// 2) http://162.55.220.72:5005/user_info\r",
+							"// req. (RAW JSON)\r",
+							"// POST\r",
+							"// age: int\r",
+							"// salary: int\r",
+							"// name: str\r",
+							"// auth_token\r",
+							"// resp.\r",
+							"// {'start_qa_salary':salary,\r",
+							"//  'qa_salary_after_6_months': salary * 2,\r",
+							"//  'qa_salary_after_12_months': salary * 2.9,\r",
+							"//  'person': {'u_name':[user_name, salary, age],\r",
+							"//                                 'u_age':age,\r",
+							"//                                 'u_salary_1.5_year': salary * 4}\r",
+							"//                                 }\r",
+							"\r",
+							"// Тесты:\r",
+							"// 1) Статус код 200\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"// 2) Проверка структуры json в ответе\r",
+							"var schema = {\r",
+							"    \"items\": {\r",
+							"        \"type\": \"boolean\"\r",
+							"    }\r",
+							"};\r",
+							"\r",
+							"var data1 = [true, false];\r",
+							"var data2 = [true, 123];\r",
+							"\r",
+							"pm.test('Schema is valid', function () {\r",
+							"    pm.expect(tv4.validate(data1, schema)).to.be.true;\r",
+							"    pm.expect(tv4.validate(data2, schema)).to.be.true;\r",
+							"});\r",
+							"\r",
+							"// 3) В ответе указаны коэффициенты умножения salary, напишите тесты по проверке правильности результата перемножения на коэффициент.\r",
+							"// 4) Достать значение из поля 'u_salary_1.5_year' и передать в поле salary запроса http://162.55.220.72:5005/get_test_user\r",
+							"// ===================\r",
+							"\r",
+							"// 3) http://162.55.220.72:5005/new_data\r",
+							"// req.\r",
+							"// POST\r",
+							"// age: int\r",
+							"// salary: int\r",
+							"// name: str\r",
+							"// auth_token\r",
+							"\r",
+							"// Resp.\r",
+							"// {'name':name,\r",
+							"//   'age': int(age),\r",
+							"//   'salary': [salary, str(salary2), str(salary3)]}\r",
+							"\r",
+							"// Тесты:\r",
+							"// 1) Статус код 200\r",
+							"// 2) Проверка структуры json в ответе.\r",
+							"// 3) В ответе указаны коэффициенты умножения salary, напишите тесты по проверке правильности результата перемножения на коэффициент.\r",
+							"// 4) проверить, что 2-й элемент массива salary больше 1-го и 0-го\r",
+							"// ===================\r",
+							"// 4) http://162.55.220.72:5005/test_pet_info\r",
+							"// req.\r",
+							"// POST\r",
+							"// age: int\r",
+							"// weight: int\r",
+							"// name: str\r",
+							"// auth_token\r",
+							"\r",
+							"\r",
+							"// Resp.\r",
+							"// {'name': name,\r",
+							"//  'age': age,\r",
+							"//  'daily_food':weight * 0.012,\r",
+							"//  'daily_sleep': weight * 2.5}\r",
+							"\r",
+							"\r",
+							"// Тесты:\r",
+							"// 1) Статус код 200\r",
+							"// 2) Проверка структуры json в ответе.\r",
+							"// 3) В ответе указаны коэффициенты умножения weight, напишите тесты по проверке правильности результата перемножения на коэффициент.\r",
+							"\r",
+							"// ===================\r",
+							"\r",
+							"// 5) http://162.55.220.72:5005/get_test_user\r",
+							"// req.\r",
+							"// POST\r",
+							"// age: int\r",
+							"// salary: int\r",
+							"// name: str\r",
+							"// auth_token\r",
+							"\r",
+							"// Resp.\r",
+							"// {'name': name,\r",
+							"//  'age':age,\r",
+							"//  'salary': salary,\r",
+							"//  'family':{'children':[['Alex', 24],['Kate', 12]],\r",
+							"//  'u_salary_1.5_year': salary * 4}\r",
+							"//   }\r",
+							"\r",
+							"// Тесты:\r",
+							"// 1) Статус код 200\r",
+							"// 2) Проверка структуры json в ответе.\r",
+							"// 3) Проверить что занчение поля name = значению переменной name из окружения\r",
+							"// 4) Проверить что занчение поля age в ответе соответсвует отправленному в запросе значению поля age\r",
+							"\r",
+							"// ===================\r",
+							"\r",
+							"// 6) http://162.55.220.72:5005/currency\r",
+							"// req.\r",
+							"// POST\r",
+							"// auth_token\r",
+							"\r",
+							"// Resp. Передаётся список массив объектов.\r",
+							"// [\r",
+							"// {\"Cur_Abbreviation\": str,\r",
+							"//  \"Cur_ID\": int,\r",
+							"//  \"Cur_Name\": str\r",
+							"// }\r",
+							"// …\r",
+							"// {\"Cur_Abbreviation\": str,\r",
+							"//  \"Cur_ID\": int,\r",
+							"//  \"Cur_Name\": str\r",
+							"// }\r",
+							"// ]\r",
+							"\r",
+							"// Тесты:\r",
+							"// 1) Можете взять любой объект из присланного списка, используйте js random.\r",
+							"// В объекте возьмите Cur_ID и передать через окружение в следующий запрос.\r",
+							"\r",
+							"//  ===================\r",
+							"// 7) http://162.55.220.72:5005/curr_byn\r",
+							"// req.\r",
+							"// POST\r",
+							"// auth_token\r",
+							"// curr_code: int\r",
+							"\r",
+							"// Resp.\r",
+							"// {\r",
+							"//     \"Cur_Abbreviation\": str\r",
+							"//     \"Cur_ID\": int,\r",
+							"//     \"Cur_Name\": str,\r",
+							"//     \"Cur_OfficialRate\": float,\r",
+							"//     \"Cur_Scale\": int,\r",
+							"//     \"Date\": str\r",
+							"// }\r",
+							"\r",
+							"// Тесты:\r",
+							"// 1) Статус код 200\r",
+							"// 2) Проверка структуры json в ответе.\r",
+							"\r",
+							"\r",
+							"// ===============\r",
+							"// ***\r",
+							"// 1) получить список валют\r",
+							"// 2) итерировать список валют\r",
+							"// 3) в каждой итерации отправлять запрос на сервер для получения курса каждой валюты\r",
+							"// 4) если возвращается 500 код, переходим к следующей итреации\r",
+							"// 5) если получаем 200 код, проверяем response json на наличие поля \"Cur_OfficialRate\"\r",
+							"// 6) если поле есть, пишем в консоль инфу про фалюту в виде response\r",
+							"// {\r",
+							"//     \"Cur_Abbreviation\": str\r",
+							"//     \"Cur_ID\": int,\r",
+							"//     \"Cur_Name\": str,\r",
+							"//     \"Cur_OfficialRate\": float,\r",
+							"//     \"Cur_Scale\": int,\r",
+							"//     \"Date\": str\r",
+							"// }\r",
+							"// 7) переходим к следующей итерации"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "auth_token",
+							"value": "{{token}}",
+							"type": "text"
+						},
+						{
+							"key": "age",
+							"value": "{{age}}",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "{{name}}",
+							"type": "text"
+						},
+						{
+							"key": "salary",
+							"value": "{{salary}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "1",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "2",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "3",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "4",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "5",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "6",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
