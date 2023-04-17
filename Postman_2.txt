@@ -120,7 +120,6 @@ http://162.55.220.72:5005/object_info_3
 11. Check that the name parameter is set to Luky.
 12. Check that the age parameter is 4.
 ============================================================================================================
-
 http://162.55.220.72:5005/object_info_4
 1. Submit a request.
 2. Status code 200
