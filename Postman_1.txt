@@ -159,7 +159,6 @@ response:
            'family': {'children': [['Alex', 24], ['Kate', 12]],
                       'u_salary_1_5_year': salary * 4}}
 ==========================================================================================
-
 EP_3
 Method: GET
 endpoint: /object_info_1
