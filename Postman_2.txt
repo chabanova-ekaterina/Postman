@@ -106,7 +106,6 @@ http://162.55.220.72:5005/user_info_3
 11. Print the family parameter from response to the console.
 12. Check that u_salary_1_5_year in response is equal to salary*4 (pick salary from request)
 ============================================================================================================
-
 http://162.55.220.72:5005/object_info_3
 1. Submit a request.
 2. Status code 200
