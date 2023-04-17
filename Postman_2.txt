@@ -143,7 +143,6 @@ http://162.55.220.72:5005/object_info_4
 20. Pass the salary variable to the environment
 21. Write a loop that will output the list elements from the salary parameter to the console in order.
 ============================================================================================================
-
 http://162.55.220.72:5005/user_info_2
 1. Insert the salary parameter from the environment into request
 2. Insert the age parameter from the environment into age
