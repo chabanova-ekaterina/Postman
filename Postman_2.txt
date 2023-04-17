@@ -92,7 +92,6 @@ http://162.55.220.72:5005/first
 2. Status code 200
 3. Check that the correct string comes in body.
 ============================================================================================================
-
 http://162.55.220.72:5005/user_info_3
 1. Submit a request.
 2. Status code 200
